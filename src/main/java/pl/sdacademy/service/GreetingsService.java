@@ -11,9 +11,6 @@ public class GreetingsService {
     }
 
     public String loadGreetings() {
-        if (repository == null) {
-            return "Hello!";
-        }
         return repository.getGreeting();
     }
 }

@@ -1,16 +1,22 @@
 package pl.sdacademy;
 
-import pl.sdacademy.service.GreetingsService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import pl.sdacademy.config.ApplicationConfig;
+import pl.sdacademy.service.HelloService;
+
+import java.util.Scanner;
 
 public class Application {
 
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        String source = "db";
+        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        HelloService helloService = context.getBean(HelloService.class);
 
-        GreetingsService service = DependencyContainer.getGreetingsService(source);
-        String greeting = service.loadGreetings();
-
-        System.out.println(greeting);
-
+        System.out.println("Wpisz typ implementacji (db,memory):");
+        String type = scanner.nextLine();
+        helloService.sayHello(type);
     }
 }
