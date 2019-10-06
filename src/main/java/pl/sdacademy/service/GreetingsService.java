@@ -1,7 +1,6 @@
 package pl.sdacademy.service;
 
 import pl.sdacademy.repository.GreetingRepository;
-import pl.sdacademy.repository.GreetingsDatabaseRepository;
 
 public class GreetingsService {
 
